@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>katanbuild — من نحن</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <!-- INTRO -->
+    <section class="hero" style="padding:72px 0 60px;">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="about_eyebrow"></div>
+          <h1 data-i18n="about_title" style="margin-top:18px;font-size:clamp(2rem,4vw,2.9rem);"></h1>
+          <p class="lede" data-i18n="about_lede"></p>
+        </div>
+        <div class="hero-art">
+          <div class="badge"><span data-i18n="hero_badge_l"></span><span data-i18n="hero_badge_r"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="section section-alt">
+      <div class="container" style="max-width:820px;">
+        <h2 class="line-title" data-i18n="pillars_title" style="margin-bottom:12px;"></h2>
+        <div style="margin-top:24px;">
+          <div class="pillar">
+            <span class="mark mono">01</span>
+            <div>
+              <h3 data-i18n="pillar_exp_t"></h3>
+              <p data-i18n="pillar_exp_d"></p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="mark mono">02</span>
+            <div>
+              <h3 data-i18n="pillar_innov_t"></h3>
+              <p data-i18n="pillar_innov_d"></p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="mark mono">03</span>
+            <div>
+              <h3 data-i18n="pillar_quality_t"></h3>
+              <p data-i18n="pillar_quality_d"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="section">
+      <div class="container">
+        <h2 class="line-title" data-i18n="values_title" style="margin-bottom:36px;"></h2>
+        <div class="grid-3">
+          <div class="grid-cell"><span class="num mono">KB-01</span>
+            <h3 data-i18n="value_perf_t"></h3>
+            <p data-i18n="value_perf_d"></p>
+          </div>
+          <div class="grid-cell"><span class="num mono">KB-02</span>
+            <h3 data-i18n="value_support_t"></h3>
+            <p data-i18n="value_support_d"></p>
+          </div>
+          <div class="grid-cell"><span class="num mono">KB-03</span>
+            <h3 data-i18n="value_field_t"></h3>
+            <p data-i18n="value_field_d"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MILESTONES -->
+    <section class="section section-alt">
+      <div class="container" style="max-width:760px;">
+        <h2 class="line-title" data-i18n="milestones_title" style="margin-bottom:40px;"></h2>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="cta-band" id="contact">
+      <div class="container">
+        <div class="row">
+          <div>
+            <h2 data-i18n="cta_title"></h2>
+            <p data-i18n="cta_sub" style="color:var(--text-muted);margin-top:10px;"></p>
+            <div class="contact-strip">
+              <span id="cPhone"></span>
+              <span id="cEmail"></span>
+              <span id="cAddr"></span>
+            </div>
+          </div>
+          <a href="tel:+963110000000" class="btn btn-primary" data-i18n="cta_button"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderAbout() {
+      const lang = window.currentLang();
+      const S = window.SITE;
+
+      document.getElementById("timeline").innerHTML = S.milestones
+        .map(
+          (m) => `
+      <div class="item">
+        <span class="year">${m.year}</span>
+        <h3>${window.t("milestone_" + m.key + "_t")}</h3>
+        <p>${window.t("milestone_" + m.key + "_d")}</p>
+      </div>`
+        )
+        .join("");
+
+      document.getElementById("cPhone").textContent = S.site.phone;
+      document.getElementById("cEmail").textContent = S.site.email;
+      document.getElementById("cAddr").textContent = S.site.address[lang];
+    }
+    document.addEventListener("site:ready", renderAbout);
+    document.addEventListener("site:refresh", renderAbout);
+  </script>
+</body>
+
+</html>

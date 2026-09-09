@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>katanbuild — مواد بناء صناعية</title>
+  <meta name="description" content="katanbuild — مواد الطينة والعزل ولواصق السيراميك للمقاولين والمشاريع." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero hero-slider" id="heroSlider">
+      <div class="hero-slide-image" aria-hidden="true"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-grid">
+        <div class="reveal hero-copy">
+          <div class="eyebrow" id="heroEyebrow" data-i18n="hero_eyebrow"></div>
+          <h1 id="heroTitle" data-i18n="hero_title" style="margin-top:20px;"></h1>
+          <p class="lede" id="heroHint" data-i18n="hero_lede"></p>
+          <div class="hero-cta">
+            <a href="products.html" class="btn btn-primary" id="heroPrimary" data-i18n="hero_cta_products"></a>
+            <a href="projects.html" class="btn btn-outline" id="heroSecondary" data-i18n="hero_cta_projects"></a>
+          </div>
+          <div class="hero-stats">
+            <div><strong data-i18n="hero_stat1_n"></strong><span data-i18n="hero_stat1_l"></span></div>
+            <div><strong data-i18n="hero_stat2_n"></strong><span data-i18n="hero_stat2_l"></span></div>
+            <div><strong data-i18n="hero_stat3_n"></strong><span data-i18n="hero_stat3_l"></span></div>
+          </div>
+        </div>
+        <div class="hero-art reveal" aria-hidden="true">
+          <div class="badge"><span data-i18n="hero_badge_l"></span><span data-i18n="hero_badge_r"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="section_categories_eyebrow"></div>
+          <h2 class="line-title" data-i18n="section_categories_title" style="margin-top:16px;"></h2>
+          <p data-i18n="section_categories_sub"></p>
+        </div>
+        <div class="product-grid" id="homeProducts"></div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="section_why_eyebrow"></div>
+          <h2 class="line-title" data-i18n="section_why_title" style="margin-top:16px;"></h2>
+        </div>
+        <div class="grid-4">
+          <div class="grid-cell"><span class="num mono">01</span>
+            <h3 data-i18n="why_1_t"></h3>
+            <p data-i18n="why_1_d"></p>
+          </div>
+          <div class="grid-cell"><span class="num mono">02</span>
+            <h3 data-i18n="why_2_t"></h3>
+            <p data-i18n="why_2_d"></p>
+          </div>
+          <div class="grid-cell"><span class="num mono">03</span>
+            <h3 data-i18n="why_3_t"></h3>
+            <p data-i18n="why_3_d"></p>
+          </div>
+          <div class="grid-cell"><span class="num mono">04</span>
+            <h3 data-i18n="why_4_t"></h3>
+            <p data-i18n="why_4_d"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS PREVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head"
+          style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;max-width:none;">
+          <div style="max-width:60ch;">
+            <div class="eyebrow" data-i18n="section_projects_eyebrow"></div>
+            <h2 class="line-title" data-i18n="section_projects_title" style="margin-top:16px;"></h2>
+          </div>
+          <a href="projects.html" class="btn btn-outline" data-i18n="view_all_projects"></a>
+        </div>
+        <div class="project-grid" id="homeProjects"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="container row">
+        <div>
+          <h2 data-i18n="cta_title"></h2>
+          <p data-i18n="cta_sub" style="color:var(--text-muted);margin-top:10px;"></p>
+        </div>
+        <a href="about.html#contact" class="btn btn-primary" data-i18n="cta_button"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let heroTimer;
+    let heroIndex = 0;
+    function renderHeroSlides(lang) {
+      const slides = window.SITE.media.heroSlides;
+      const slide = slides[heroIndex % slides.length];
+      const hero = document.getElementById("heroSlider");
+      if (!hero || !slide) return;
+      hero.style.setProperty("--hero-image", `url("${new URL(slide.image, document.baseURI).href}")`);
+      document.getElementById("heroEyebrow").textContent = slide.eyebrow[lang];
+      document.getElementById("heroTitle").textContent = slide.title[lang];
+      document.getElementById("heroHint").textContent = slide.hint[lang];
+      const primary = document.getElementById("heroPrimary");
+      const secondary = document.getElementById("heroSecondary");
+      primary.textContent = slide.primaryLabel[lang];
+      primary.href = slide.primaryHref;
+      secondary.textContent = slide.secondaryLabel[lang];
+      secondary.href = slide.secondaryHref;
+      hero.classList.remove("is-changing");
+      requestAnimationFrame(() => hero.classList.add("is-changing"));
+      clearInterval(heroTimer);
+      heroTimer = setInterval(() => {
+        heroIndex = (heroIndex + 1) % slides.length;
+        renderHeroSlides(window.currentLang());
+      }, 4000);
+    }
+
+    function renderHome() {
+      const lang = window.currentLang();
+      const S = window.SITE;
+
+      if (window.renderHeroSlides) window.renderHeroSlides(lang);
+
+      document.getElementById("homeProducts").innerHTML = S.products
+        .map(
+          (p) => `
+      <a href="product.html?slug=${p.slug}" class="product-card">
+        <div class="thumb" style="background-image:url('${S.media.productImages[S.products.indexOf(p)]}')"><span class="cat">${p.category[lang]}</span></div>
+        <div class="body">
+          <h3>${p.title[lang]}</h3>
+          <p>${p.short[lang]}</p>
+          <span class="go">${window.t("view_category")} ${lang === "ar" ? "←" : "→"}</span>
+        </div>
+      </a>`
+        )
+        .join("");
+
+      document.getElementById("homeProjects").innerHTML = S.projects
+        .slice(0, 2)
+        .map(
+          (proj, i) => `
+      <div class="project-card">
+        <div class="thumb" style="background-image:url('${S.media.projectImages[i]}')"></div>
+        <div class="body">
+          <span class="num mono">0${i + 1}</span>
+          <h3>${proj.title[lang]}</h3>
+          <p>${proj.desc[lang]}</p>
+        </div>
+      </div>`
+        )
+        .join("");
+    }
+    document.addEventListener("site:ready", renderHome);
+    document.addEventListener("site:refresh", renderHome);
+  </script>
+</body>
+
+</html>

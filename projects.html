@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>katanbuild — المشاريع</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="section" style="padding-top:56px;">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="projects_eyebrow"></div>
+          <h1 class="line-title" data-i18n="projects_title" style="margin-top:16px;"></h1>
+          <p data-i18n="projects_sub"></p>
+        </div>
+        <div class="project-grid" id="allProjects"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderProjects() {
+      const lang = window.currentLang();
+      const S = window.SITE;
+
+      document.getElementById("allProjects").innerHTML = S.projects
+        .map(
+          (proj, i) => `
+      <div class="project-card">
+        <div class="thumb" style="background-image:url('${S.media.projectImages[i]}')"></div>
+        <div class="body">
+          <span class="num mono">0${i + 1}</span>
+          <h3>${proj.title[lang]}</h3>
+          <p>${proj.desc[lang]}</p>
+          <span class="mono" style="font-size:.78rem;color:var(--text-muted);display:block;margin-top:16px;">${window.t("features_title")}</span>
+          <ul>
+            ${proj.features[lang].map((f) => `<li>${f}</li>`).join("")}
+          </ul>
+        </div>
+      </div>`
+        )
+        .join("");
+    }
+    document.addEventListener("site:ready", renderProjects);
+    document.addEventListener("site:refresh", renderProjects);
+  </script>
+</body>
+
+</html>

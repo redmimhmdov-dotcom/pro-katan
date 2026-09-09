@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>katanbuild — المنتجات</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="section" style="padding-top:56px;">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="products_eyebrow"></div>
+          <h1 class="line-title" data-i18n="products_title" style="margin-top:16px;"></h1>
+          <p data-i18n="products_sub"></p>
+        </div>
+        <div class="product-grid" id="allProducts"></div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip-row">
+        <span class="mono" data-i18n="strip_title" style="color:var(--text-muted);font-size:.85rem;"></span>
+        <div class="strip-links" id="stripLinks"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderProducts() {
+      const lang = window.currentLang();
+      const S = window.SITE;
+
+      document.getElementById("allProducts").innerHTML = S.products
+        .map(
+          (p) => `
+      <a href="product.html?slug=${p.slug}" class="product-card">
+        <div class="thumb" style="background-image:url('${S.media.productImages[S.products.indexOf(p)]}')"><span class="cat">${p.category[lang]}</span></div>
+        <div class="body">
+          <h3>${p.title[lang]}</h3>
+          <p>${p.short[lang]}</p>
+          <span class="go">${window.t("view_category")} ${lang === "ar" ? "←" : "→"}</span>
+        </div>
+      </a>`
+        )
+        .join("");
+
+      document.getElementById("stripLinks").innerHTML = S.products
+        .map((p) => `<a href="product.html?slug=${p.slug}">${p.category[lang]}</a>`)
+        .join("");
+    }
+    document.addEventListener("site:ready", renderProducts);
+    document.addEventListener("site:refresh", renderProducts);
+  </script>
+</body>
+
+</html>

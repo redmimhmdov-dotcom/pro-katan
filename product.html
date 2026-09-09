@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="pageTitle">katanbuild — تفاصيل المنتج</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="section" style="padding-top:56px;">
+      <div class="container">
+        <a href="products.html" class="mono" data-i18n="back_to_products"
+          style="font-size:.85rem;color:var(--text-muted);display:inline-block;margin-bottom:28px;"></a>
+
+        <div class="detail-layout">
+          <div class="detail-main" id="detailMain"></div>
+
+          <aside class="sidebar">
+            <h4 data-i18n="detail_sidebar_title"></h4>
+            <div id="sidebarList"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip-row">
+        <span class="mono" data-i18n="strip_title" style="color:var(--text-muted);font-size:.85rem;"></span>
+        <div class="strip-links" id="stripLinks"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function currentSlug() {
+      const params = new URLSearchParams(location.search);
+      return params.get("slug") || window.SITE.products[0].slug;
+    }
+
+    function renderDetail() {
+      const lang = window.currentLang();
+      const S = window.SITE;
+      const slug = currentSlug();
+      const product = S.products.find((p) => p.slug === slug) || S.products[0];
+
+      document.title = `katanbuild — ${product.title[lang]}`;
+
+      document.getElementById("detailMain").innerHTML = `
+      <span class="cat-tag mono">${product.category[lang]}</span>
+      <h1>${product.title[lang]}</h1>
+      <div class="thumb-lg" style="background-image:url('${S.media.productImages[S.products.indexOf(product)]}')"></div>
+      <p class="lede">${product.short[lang]}</p>
+      <p class="desc">${product.details[lang]}</p>
+      <div class="spec-list">
+        <h4 class="mono" style="color:var(--text-muted);font-size:.8rem;margin-bottom:6px;">${window.t("detail_specs")}</h4>
+        ${product.specs
+          .map((s) => `<div class="row"><span>${s[lang]}</span><span>${s.val[lang]}</span></div>`)
+          .join("")}
+      </div>
+    `;
+
+      document.getElementById("sidebarList").innerHTML = S.products
+        .map(
+          (p) => `
+      <a href="product.html?slug=${p.slug}" class="${p.slug === product.slug ? "active" : ""}">
+        <span>${p.category[lang]}</span>
+        <span class="arrow">${lang === "ar" ? "←" : "→"}</span>
+      </a>`
+        )
+        .join("");
+
+      document.getElementById("stripLinks").innerHTML = S.products
+        .filter((p) => p.slug !== product.slug)
+        .map((p) => `<a href="product.html?slug=${p.slug}">${p.category[lang]}</a>`)
+        .join("");
+    }
+    document.addEventListener("site:ready", renderDetail);
+    document.addEventListener("site:refresh", renderDetail);
+  </script>
+</body>
+
+</html>
