@@ -1,2 +1,15 @@
-git config --global user.name "اسمك"
-git config --global user.email "البريد المرتبط بحساب GitHub"
+# Local archives and exported bundles
+files.zip
+files (1).zip
+
+# Local-only media and screenshots
+image-urls.txt
+Screenshot-2026-06-21-120400.png
+generated-image-*.png
+studio-image-*.png
+hero-2.jpg
+value-1.jpg
+value-3.jpg
+
+# Editor settings
+.vscode/
