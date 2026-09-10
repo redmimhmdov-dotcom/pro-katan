@@ -13,7 +13,7 @@ window.SITE = {
     projectImages: ["assets/reference/hero-2.jpg", "assets/reference/value-1.jpg", "assets/reference/value-3.jpg", "assets/reference/hero-1.jpg"]
   },
   site: {
-    phone: "+963 11 000 0000",
+    phone: "+9630952725590",
     email: "info@katanbuild.example",
     address: { ar: "المنطقة الصناعية، دمشق، سوريا", en: "Industrial Zone, Damascus, Syria" }
   },

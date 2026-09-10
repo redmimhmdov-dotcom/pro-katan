@@ -1132,6 +1132,19 @@ button {
   color: var(--text-muted);
 }
 
+.footer-credit {
+  text-align: right;
+}
+
+.footer-credit a {
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.footer-credit a:hover {
+  color: var(--accent);
+}
+
 @media (max-width:860px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;

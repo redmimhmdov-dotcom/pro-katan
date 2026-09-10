@@ -106,7 +106,7 @@
         <div>
           <h4 data-i18n="footer_contact"></h4>
           <ul class="mono" style="font-size:.86rem;color:var(--text-muted);">
-            <li>${S.site.phone}</li>
+            <li><a href="tel:${S.site.phone}">${S.site.phone}</a></li>
             <li>${S.site.email}</li>
             <li class="addr"></li>
           </ul>
@@ -114,7 +114,7 @@
       </div>
       <div class="footer-bottom">
         <span>© <span id="year"></span> ${S.brand} — <span data-i18n="rights"></span></span>
-        <span class="mono">Damascus, Syria</span>
+        <span class="footer-credit">تصميم وبرمجة من قبل محمد الحسين <a href="tel:+9630952725590">0952725590</a></span>
       </div>
     </div>`;
   }
