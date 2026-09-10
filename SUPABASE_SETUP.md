@@ -22,6 +22,8 @@ If the CLI is installed globally, use `supabase` instead of `npx supabase`.
 
 This creates the catalog, customers, orders, invoices, inventory, media, profiles, audit logs, storage bucket, and Row Level Security policies.
 
+The payment confirmation page is available at `payment.html`. It accepts the invoice reference, payer details, amount, and receipt image or PDF, then stores the receipt privately for staff review.
+
 ## 2. Create the first administrator
 
 1. Open **Authentication -> Users** in Supabase.

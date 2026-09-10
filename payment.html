@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>تأكيد الدفع | katanbuild</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .payment-page {
+            min-height: 100vh;
+            padding: 48px 0;
+        }
+
+        .payment-layout {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .payment-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .payment-card h1,
+        .payment-card h2 {
+            margin-top: 10px;
+        }
+
+        .payment-card p {
+            margin-top: 10px;
+            color: var(--text-muted);
+        }
+
+        .payment-alert {
+            padding: 16px;
+            border-inline-start: 4px solid var(--accent);
+            background: var(--surface-2);
+        }
+
+        .payment-qr {
+            width: min(320px, 100%);
+            aspect-ratio: 1;
+            margin: 24px auto 12px;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .payment-form {
+            display: grid;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .payment-form label {
+            display: grid;
+            gap: 7px;
+            color: var(--text-muted);
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background: var(--surface-2);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .payment-status {
+            min-height: 28px;
+            color: var(--accent);
+        }
+
+        @media (max-width: 760px) {
+            .payment-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-page {
+                padding: 24px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="payment-page">
+        <div class="container">
+            <div class="payment-layout">
+                <section class="payment-card">
+                    <div class="eyebrow">SECURE PAYMENT REVIEW</div>
+                    <h1>تأكيد دفع المشروع</h1>
+                    <p>هذا الموقع في وضع تجريبي لمدة 24 ساعة للتأكد من الدفع وتسليم النسخة النهائية.</p>
+                    <div class="payment-alert">بعد التحويل عبر شام كاش، أرفق صورة الإيصال وأدخل رقم الفاتورة. سيتم
+                        التحقق يدويًا قبل تفعيل التسليم النهائي.</div>
+                      <img class="payment-qr" src="assets/payment/sham-cash-qr.png" alt="باركود الدفع عبر شام كاش" onerror="this.hidden=true;document.getElementById('qrMissing').hidden=false">
+                      <p id="qrMissing" class="payment-status" hidden>سيظهر باركود شام كاش هنا بعد رفع صورة الحساب.</p>
+                    <p class="mono" style="text-align:center;">شام كاش — امسح الباركود للتحويل</p>
+                </section>
+                <section class="payment-card">
+                    <div class="eyebrow">RECEIPT SUBMISSION</div>
+                    <h2>إرسال إيصال التحويل</h2>
+                    <p>لا ترسل صورة الإيصال في محادثة عامة. سيتم حفظها بشكل خاص ومراجعتها من المسؤول.</p>
+                    <form class="payment-form" id="paymentForm">
+                        <label>رقم الفاتورة أو المشروع<input name="invoice_reference" required
+                                placeholder="مثال: KB-2026-001"></label>
+                        <label>اسم صاحب الشركة<input name="payer_name" required></label>
+                        <label>رقم الهاتف<input name="payer_phone" required></label>
+                        <label>المبلغ المحول<input name="amount" type="number" min="0" step="0.01" required></label>
+                        <label>العملة<select name="currency">
+                                <option value="USD">دولار</option>
+                                <option value="SYP">ليرة سورية</option>
+                            </select></label>
+                        <label>صورة إيصال التحويل<input name="receipt" type="file" accept="image/*,.pdf"
+                                required></label>
+                        <button class="btn btn-primary" type="submit">إرسال الإيصال للمراجعة</button>
+                        <p class="payment-status" id="paymentStatus" role="status"></p>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+
+</html>
