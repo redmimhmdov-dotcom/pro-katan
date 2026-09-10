@@ -59,9 +59,9 @@
       .join("");
     return `
     <div class="container">
-      <a href="index.html" class="brand" id="brandTrigger" title="Tahwal Digital">
-        <span class="brand-mark" aria-hidden="true">TD</span>
-        <span>Tahwal Digital</span>
+      <a href="index.html" class="brand" id="brandTrigger" title="katanbuild">
+        <img src="${S.logo}" alt="${S.brand}" />
+        <span>${S.brand}</span>
       </a>
       <nav class="main-nav" id="mainNav">${navHtml}</nav>
       <div class="header-actions">
@@ -85,8 +85,8 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom:14px;">
-            <span class="brand-mark" aria-hidden="true">TD</span>
-            <span>Tahwal Digital</span>
+            <img src="${S.logo}" alt="${S.brand}" />
+            <span>${S.brand}</span>
           </div>
           <p data-i18n="footer_about_d" style="color:var(--text-muted);font-size:.92rem;max-width:38ch;"></p>
         </div>
@@ -113,7 +113,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> Tahwal Digital — <span data-i18n="rights"></span></span>
+        <span>© <span id="year"></span> ${S.brand} — <span data-i18n="rights"></span></span>
         <span class="footer-credit">تصميم وبرمجة من قبل محمد الحسين <a href="tel:+9630952725590">0952725590</a></span>
       </div>
     </div>`;
