@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "linear": {
+      "enabled": true
+    },
+    "notion": {
+      "enabled": true
+    },
+    "miro": {
+      "enabled": true
+    },
+    "github": {
+      "enabled": true
+    },
+    "shaders": {
+      "enabled": true
+    }
+  }
+}
