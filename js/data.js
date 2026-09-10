@@ -4,13 +4,13 @@ window.SITE = {
   logo: "assets/katanbuild-logo.png",
   media: {
     heroSlides: [
-      { image: "assets/reference/hero-2.jpg", eyebrow: { ar: "مواد بناء متخصصة", en: "Specialized building chemicals" }, title: { ar: "katanbuild تصنع الفرق في كيمياء البناء", en: "katanbuild makes the difference in building chemistry" }, hint: { ar: "حلول مصممة للموقع من الأساس حتى التشطيب.", en: "Solutions designed for the site, from base coat to final finish." }, primaryLabel: { ar: "استعرض المنتجات", en: "Browse products" }, primaryHref: "products.html", secondaryLabel: { ar: "شاهد المشاريع", en: "See projects" }, secondaryHref: "projects.html" },
+      { image: "assets/reference/project-main.jpg", eyebrow: { ar: "مواد بناء متخصصة", en: "Specialized building chemicals" }, title: { ar: "katanbuild تصنع الفرق في كيمياء البناء", en: "katanbuild makes the difference in building chemistry" }, hint: { ar: "حلول مصممة للموقع من الأساس حتى التشطيب.", en: "Solutions designed for the site, from base coat to final finish." }, primaryLabel: { ar: "استعرض المنتجات", en: "Browse products" }, primaryHref: "products.html", secondaryLabel: { ar: "شاهد المشاريع", en: "See projects" }, secondaryHref: "projects.html" },
       { image: "assets/reference/value-1.jpg", eyebrow: { ar: "أداء يدوم", en: "Performance that lasts" }, title: { ar: "حماية أقوى وتشطيبات أكثر ثباتاً", en: "Stronger protection, steadier finishes" }, hint: { ar: "تركيبات موثوقة للواجهات والأسطح والمناطق الرطبة.", en: "Reliable formulations for facades, roofs and wet areas." }, primaryLabel: { ar: "اكتشف الحلول", en: "Explore solutions" }, primaryHref: "products.html", secondaryLabel: { ar: "من نحن", en: "About us" }, secondaryHref: "about.html" },
       { image: "assets/reference/value-3.jpg", eyebrow: { ar: "من المختبر إلى الورشة", en: "From lab to site" }, title: { ar: "ابتكار كيميائي يساند كل مشروع", en: "Chemical innovation behind every project" }, hint: { ar: "خبرة ميدانية، ضبط جودة، ومتابعة فنية مستمرة.", en: "Field experience, quality control and continuous technical support." }, primaryLabel: { ar: "مشاريعنا", en: "Our projects" }, primaryHref: "projects.html", secondaryLabel: { ar: "تواصل معنا", en: "Contact us" }, secondaryHref: "about.html#contact" }
     ],
     background: "assets/reference/value-2.jpg",
     productImages: ["assets/reference/value-3.jpg", "assets/reference/value-1.jpg", "assets/reference/hero-1.jpg", "assets/reference/value-2.jpg"],
-    projectImages: ["assets/reference/hero-2.jpg", "assets/reference/value-1.jpg", "assets/reference/value-3.jpg", "assets/reference/hero-1.jpg"]
+    projectImages: ["assets/reference/project-work.jpg", "assets/reference/project-main.jpg", "assets/reference/value-3.jpg", "assets/reference/hero-1.jpg"]
   },
   site: {
     phone: "+9630952725590",
