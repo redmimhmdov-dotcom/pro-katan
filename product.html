@@ -57,6 +57,7 @@
 
       document.getElementById("detailMain").innerHTML = `
       <span class="cat-tag mono">${product.category[lang]}</span>
+      <button class="btn btn-primary" type="button" data-cart-slug="${product.slug}" data-cart-title="${product.title[lang]}">أضف إلى الطلبية</button>
       <h1>${product.title[lang]}</h1>
       <div class="thumb-lg" style="background-image:url('${S.media.productImages[S.products.indexOf(product)]}')"></div>
       <p class="lede">${product.short[lang]}</p>
@@ -87,6 +88,9 @@
     document.addEventListener("site:ready", renderDetail);
     document.addEventListener("site:refresh", renderDetail);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>

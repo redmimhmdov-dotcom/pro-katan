@@ -50,6 +50,7 @@
           <h3>${p.title[lang]}</h3>
           <p>${p.short[lang]}</p>
           <span class="go">${window.t("view_category")} ${lang === "ar" ? "←" : "→"}</span>
+          <button class="btn btn-primary" type="button" data-cart-slug="${p.slug}" data-cart-title="${p.title[lang]}">أضف للطلبية</button>
         </div>
       </a>`
         )
@@ -62,6 +63,9 @@
     document.addEventListener("site:ready", renderProducts);
     document.addEventListener("site:refresh", renderProducts);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>
