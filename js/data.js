@@ -257,6 +257,11 @@ window.SITE = {
     }
   ],
 
+  productTools: {
+    coverage: 4,
+    packageLabel: { ar: "كيس / عبوة", en: "bag / package" }
+  },
+
   projects: [
     {
       slug: "waterproofing-workshops",

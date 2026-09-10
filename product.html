@@ -72,6 +72,17 @@
           <div class="section-head"><div class="eyebrow">${lang === "ar" ? "مواد القسم" : "Section products"}</div><h2>${lang === "ar" ? `المواد الموجودة داخل القسم (${product.items.length})` : `Products inside this section (${product.items.length})`}</h2></div>
           <div class="product-grid">${product.items.map((item) => `<article class="product-card section-product-card"><div class="thumb" style="background-image:url('${S.media.productImages[item.imageIndex]}')"><span class="cat">${product.category[lang]}</span></div><div class="body"><h3>${item.title[lang]}</h3><p>${lang === "ar" ? "مادة متخصصة ضمن هذا القسم، مع مواصفات تطبيق واضحة." : "A specialized material within this section with clear application guidance."}</p><button class="btn btn-primary" type="button" data-cart-slug="${item.slug}" data-cart-title="${item.title[lang]}">${lang === "ar" ? "أضف للطلبية" : "Add to order"}</button></div></article>`).join("")}</div>
         </section>
+        <section class="quantity-tool" aria-labelledby="quantityTitle">
+          <div class="eyebrow">PROJECT ESTIMATOR</div>
+          <h2 id="quantityTitle">حاسبة الكمية وعرض السعر</h2>
+          <p>أدخل المساحة لتقدير الكمية مع نسبة هدر اختيارية.</p>
+          <div class="quantity-grid">
+            <label>المساحة بالمتر المربع<input id="areaInput" type="number" min="0" step="0.1" value="20"></label>
+            <label>نسبة الهدر<input id="wasteInput" type="number" min="0" max="50" step="1" value="10"></label>
+          </div>
+          <div class="estimate-result" id="estimateResult" role="status"></div>
+          <button class="btn btn-outline" id="printQuote" type="button">طباعة عرض سعر مبدئي</button>
+        </section>
     `;
 
       document.getElementById("sidebarList").innerHTML = S.products
@@ -91,6 +102,24 @@
     }
     document.addEventListener("site:ready", renderDetail);
     document.addEventListener("site:refresh", renderDetail);
+    document.addEventListener("site:ready", () => {
+      const area = document.getElementById("areaInput");
+      const waste = document.getElementById("wasteInput");
+      const result = document.getElementById("estimateResult");
+      const renderEstimate = () => {
+        const quantity = Math.ceil((Number(area.value) || 0) * (1 + (Number(waste.value) || 0) / 100) / window.SITE.productTools.coverage);
+        result.innerHTML = `<strong>${quantity}</strong> ${window.SITE.productTools.packageLabel.ar} تقريبًا <span>على أساس تغطية ${window.SITE.productTools.coverage} م² لكل عبوة.</span>`;
+      };
+      area.addEventListener("input", renderEstimate);
+      waste.addEventListener("input", renderEstimate);
+      renderEstimate();
+      document.getElementById("printQuote").addEventListener("click", () => {
+        const quantity = Math.ceil((Number(area.value) || 0) * (1 + (Number(waste.value) || 0) / 100) / window.SITE.productTools.coverage);
+        const quote = window.open("", "_blank", "width=760,height=720");
+        quote.document.write(`<html dir="rtl"><head><title>عرض سعر katanbuild</title></head><body><h1>katanbuild</h1><h2>عرض سعر مبدئي</h2><p>المادة: ${product.title.ar}</p><p>المساحة: ${area.value} م²</p><p>الكمية التقديرية: ${quantity} عبوة</p><p>للتأكيد والسعر النهائي: +9630952725590</p><p>تصميم وبرمجة من قبل محمد الحسين 0952725590</p><script>window.print()<\/script></body></html>`);
+        quote.document.close();
+      });
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>

@@ -20,6 +20,27 @@
           <h1 class="line-title" data-i18n="products_title" style="margin-top:16px;"></h1>
           <p data-i18n="products_sub"></p>
         </div>
+        <section class="smart-guide" aria-labelledby="smartGuideTitle">
+          <div class="eyebrow">KATANBUILD SMART GUIDE</div>
+          <h2 id="smartGuideTitle">مساعد اختيار القسم</h2>
+          <p>أجب عن سؤالين، وسنرشح لك القسم الأقرب لاستخدامك.</p>
+          <div class="smart-guide-grid">
+            <label>مكان الاستخدام<select id="guideUse">
+                <option value="surface">سطح أو سطح مكشوف</option>
+                <option value="wall">جدار أو واجهة</option>
+                <option value="tile">بلاط أو سيراميك</option>
+                <option value="inside">داخل المبنى</option>
+              </select></label>
+            <label>المشكلة الأساسية<select id="guideNeed">
+                <option value="water">رطوبة أو تسرب</option>
+                <option value="finish">تسوية أو تشطيب</option>
+                <option value="bond">تثبيت البلاط</option>
+                <option value="heat">حرارة أو عزل</option>
+              </select></label>
+          </div>
+          <button class="btn btn-primary" id="guideButton" type="button">إظهار الترشيح</button>
+          <p class="smart-result" id="guideResult" role="status"></p>
+        </section>
         <div class="product-grid" id="allProducts"></div>
       </div>
     </section>
@@ -63,6 +84,15 @@
     }
     document.addEventListener("site:ready", renderProducts);
     document.addEventListener("site:refresh", renderProducts);
+    document.addEventListener("site:ready", () => {
+      document.getElementById("guideButton").addEventListener("click", () => {
+        const need = document.getElementById("guideNeed").value;
+        const use = document.getElementById("guideUse").value;
+        const slug = need === "bond" || use === "tile" ? "ceramic-adhesive-grout" : need === "water" || use === "surface" ? "waterproofing-materials" : need === "heat" ? "thermal-insulation-materials" : "render-plaster-materials";
+        const product = window.SITE.products.find((item) => item.slug === slug);
+        document.getElementById("guideResult").innerHTML = `الترشيح الأقرب: <a href="product.html?slug=${slug}">${product.title.ar}</a> — راجع المواصفات قبل الطلب.`;
+      });
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>
