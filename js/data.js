@@ -192,7 +192,8 @@ window.SITE = {
         { ar: "زمن الشغل", en: "Working time", val: { ar: "٦٠ – ٩٠ دقيقة", en: "60–90 minutes" } },
         { ar: "سماكة الطبقة", en: "Layer thickness", val: { ar: "٥ – ٢٠ ملم", en: "5–20 mm" } },
         { ar: "التغليف", en: "Packaging", val: { ar: "أكياس ٢٥ كغ", en: "25 kg bags" } }
-      ]
+      ],
+      items: ["طينة إسمنتية داخلية", "طينة خارجية مقاومة للعوامل", "مادة تسوية الجدران", "طينة ديكورية ناعمة"].map((name, index) => ({ slug: `render-${index + 1}`, title: { ar: name, en: `Render material ${index + 1}` }, imageIndex: 0 }))
     },
     {
       slug: "waterproofing-materials",
@@ -211,7 +212,8 @@ window.SITE = {
         { ar: "المرونة", en: "Flexibility", val: { ar: "مرن حتى تشقق ٢ ملم", en: "Bridges cracks up to 2 mm" } },
         { ar: "عدد الطبقات", en: "Coats", val: { ar: "طبقتان متقاطعتان", en: "Two cross-coats" } },
         { ar: "التغليف", en: "Packaging", val: { ar: "دلاء ١٨ / ٥ كغ", en: "18 / 5 kg pails" } }
-      ]
+      ],
+      items: ["عزل أسطح مرن", "عزل حمامات ومطابخ", "عزل خزانات المياه", "معالجة الرطوبة والشقوق"].map((name, index) => ({ slug: `waterproofing-${index + 1}`, title: { ar: name, en: `Waterproofing material ${index + 1}` }, imageIndex: 1 }))
     },
     {
       slug: "ceramic-adhesive-grout",
@@ -230,7 +232,8 @@ window.SITE = {
         { ar: "زمن الفتح", en: "Open time", val: { ar: "٢٠ – ٣٠ دقيقة", en: "20–30 minutes" } },
         { ar: "قوة الالتصاق", en: "Bond strength", val: { ar: "≥ ١ نيوتن/ملم²", en: "≥ 1 N/mm²" } },
         { ar: "التغليف", en: "Packaging", val: { ar: "أكياس ٢٥ كغ", en: "25 kg bags" } }
-      ]
+      ],
+      items: ["لاصق إسمنتي C1", "لاصق إسمنتي C1T", "لاصق إسمنتي C1TE", "لاصق محسن C2", "لاصق محسن C2T", "لاصق محسن C2TE", "لاصق مرن C2TES1", "لاصق فائق المرونة C2TES2", "روبة مطاطية", "روبة إسمنتية مع السيليكون", "برايمر تجهيز الأسطح"].map((name, index) => ({ slug: `ceramic-${index + 1}`, title: { ar: name, en: `Ceramic system ${index + 1}` }, imageIndex: 2 }))
     },
     {
       slug: "thermal-insulation-materials",
@@ -249,7 +252,8 @@ window.SITE = {
         { ar: "سماكة اللوح", en: "Panel thickness", val: { ar: "٤ – ١٠ سم", en: "4–10 cm" } },
         { ar: "التوصيل الحراري", en: "Thermal conductivity", val: { ar: "≤ ٠.٠٤ واط/م.كلفن", en: "≤ 0.04 W/m·K" } },
         { ar: "التغليف", en: "Packaging", val: { ar: "ألواح / أكياس تسوية", en: "Panels / leveling bags" } }
-      ]
+      ],
+      items: ["ألواح عزل حراري للواجهات", "لاصق ألواح العزل", "شبك تسليح الواجهات", "طبقة تسوية حرارية"].map((name, index) => ({ slug: `thermal-${index + 1}`, title: { ar: name, en: `Thermal insulation material ${index + 1}` }, imageIndex: 3 }))
     }
   ],
 

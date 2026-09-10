@@ -49,6 +49,7 @@
         <div class="body">
           <h3>${p.title[lang]}</h3>
           <p>${p.short[lang]}</p>
+            <span class="product-count">${p.items.length} ${lang === "ar" ? "مواد داخل القسم" : "products in section"}</span>
           <span class="go">${window.t("view_category")} ${lang === "ar" ? "←" : "→"}</span>
           <button class="btn btn-primary" type="button" data-cart-slug="${p.slug}" data-cart-title="${p.title[lang]}">أضف للطلبية</button>
         </div>

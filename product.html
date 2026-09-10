@@ -68,6 +68,10 @@
           .map((s) => `<div class="row"><span>${s[lang]}</span><span>${s.val[lang]}</span></div>`)
           .join("")}
       </div>
+        <section class="section-products">
+          <div class="section-head"><div class="eyebrow">${lang === "ar" ? "مواد القسم" : "Section products"}</div><h2>${lang === "ar" ? `المواد الموجودة داخل القسم (${product.items.length})` : `Products inside this section (${product.items.length})`}</h2></div>
+          <div class="product-grid">${product.items.map((item) => `<article class="product-card section-product-card"><div class="thumb" style="background-image:url('${S.media.productImages[item.imageIndex]}')"><span class="cat">${product.category[lang]}</span></div><div class="body"><h3>${item.title[lang]}</h3><p>${lang === "ar" ? "مادة متخصصة ضمن هذا القسم، مع مواصفات تطبيق واضحة." : "A specialized material within this section with clear application guidance."}</p><button class="btn btn-primary" type="button" data-cart-slug="${item.slug}" data-cart-title="${item.title[lang]}">${lang === "ar" ? "أضف للطلبية" : "Add to order"}</button></div></article>`).join("")}</div>
+        </section>
     `;
 
       document.getElementById("sidebarList").innerHTML = S.products
