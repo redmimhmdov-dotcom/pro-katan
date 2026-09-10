@@ -1247,6 +1247,45 @@
     box-shadow: 0 12px 30px rgb(0 0 0 / 22%);
   }
 
+  .site-access-banner {
+    position: relative;
+    z-index: 70;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .site-access-banner a { text-decoration: underline; }
+
+  .site-access-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    background: rgb(18 19 21 / 96%);
+  }
+
+  .site-access-dialog {
+    width: min(680px, 100%);
+    padding: 44px 32px;
+    border: 1px solid var(--accent);
+    background: var(--surface);
+    box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
+    text-align: center;
+  }
+
+  .site-access-dialog h1 { margin-top: 14px; font-size: clamp(1.8rem, 4vw, 3rem); }
+  .site-access-dialog p { margin: 16px auto 0; max-width: 50ch; color: var(--text-muted); }
+  .site-access-countdown { color: var(--accent) !important; font-family: var(--font-mono); font-size: 1.2rem; }
+  .site-access-dialog .btn { display: inline-block; margin-top: 26px; }
+
   .cart-panel {
     position: fixed;
     inset: 0;

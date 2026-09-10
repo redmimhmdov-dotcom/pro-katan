@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>تحكم تسليم Tahwal Digital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .control-page {
+            min-height: 100vh;
+            padding: 48px 0
+        }
+
+        .control-card {
+            max-width: 720px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid var(--border);
+            background: var(--surface)
+        }
+
+        .control-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 24px
+        }
+
+        .control-status {
+            margin-top: 20px;
+            min-height: 28px;
+            color: var(--accent)
+        }
+
+        @media(max-width:620px) {
+            .control-actions {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="control-page">
+        <div class="container">
+            <section class="control-card">
+                <div class="eyebrow">TAHWAL DIGITAL / DELIVERY CONTROL</div>
+                <h1>حالة تسليم الموقع</h1>
+                <p>هذه الصفحة خاصة بالمسؤول. استخدم الأزرار لتفعيل الموقع بعد التحقق اليدوي من الدفع أو إيقافه.</p>
+                <div class="control-actions"><button class="btn btn-primary" data-status="paid">الموقع يعمل — تم
+                        الدفع</button><button class="btn btn-outline" data-status="hidden">إخفاء الموقع — لم يتم
+                        الدفع</button><button class="btn btn-outline" data-status="trial">إرسال إشعار الدفع</button>
+                </div>
+                <p class="control-status" id="controlStatus"></p>
+            </section>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/payment-control.js"></script>
+</body>
+
+</html>
