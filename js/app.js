@@ -59,8 +59,8 @@
       .join("");
     return `
     <div class="container">
-      <a href="index.html" class="brand" id="brandTrigger" title="katanbuild">
-        <img src="${S.logo}" alt="${S.brand}" />
+      <a href="index.html" class="brand" id="brandTrigger" title="Tahwal Digital">
+        <span class="brand-mark" aria-hidden="true">TD</span>
         <span>Tahwal Digital</span>
       </a>
       <nav class="main-nav" id="mainNav">${navHtml}</nav>
@@ -85,7 +85,7 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom:14px;">
-            <img src="${S.logo}" alt="${S.brand}" />
+            <span class="brand-mark" aria-hidden="true">TD</span>
             <span>Tahwal Digital</span>
           </div>
           <p data-i18n="footer_about_d" style="color:var(--text-muted);font-size:.92rem;max-width:38ch;"></p>
