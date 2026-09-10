@@ -1,0 +1,18 @@
+project_id = "gcsrztcakpyqsqgqipcy"
+
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+
+[studio]
+enabled = true
+port = 54323
+
+[storage]
+enabled = true
+
+[auth]
+enabled = true

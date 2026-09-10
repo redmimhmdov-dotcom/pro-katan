@@ -1,5 +1,19 @@
 # Supabase setup
 
+## CLI project link
+
+The repository is configured for project ref `gcsrztcakpyqsqgqipcy`.
+Install or run the Supabase CLI, then authenticate without pasting the token into project files:
+
+```powershell
+npx supabase login
+npx supabase link --project-ref gcsrztcakpyqsqgqipcy
+```
+
+The login command opens a secure token prompt. Enter the access token directly in the terminal. Do not commit it, put it in `.env`, or send it in chat.
+
+If the CLI is installed globally, use `supabase` instead of `npx supabase`.
+
 ## 1. Create the database schema
 
 1. Open the Supabase project SQL Editor.
