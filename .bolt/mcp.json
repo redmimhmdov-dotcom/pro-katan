@@ -14,6 +14,12 @@
     },
     "shaders": {
       "enabled": true
+    },
+    "context7": {
+      "enabled": true
+    },
+    "granola": {
+      "enabled": true
     }
   }
 }
